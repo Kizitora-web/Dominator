@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="">
+    </head>
+
+    <body>
+        <header><p><a href="index.html">キジトラのゲーム開発所</a></p></header>
+
+        <main>
+            <video id="camera" autoplay playsinline></video>
+        </main>
+
+        <footer>©kizitora</footer>
+
+        <script>
+          async function startCamera() {
+            try {
+              const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+              const videoElement = document.getElementById('camera');
+              videoElement.srcObject = stream;
+            } catch (err) {
+              console.error('カメラの起動に失敗しました:', err);
+            }
+          }
+
+          window.addEventListener('load', startCamera);
+        </script>
+
+    </body>
+</html>
